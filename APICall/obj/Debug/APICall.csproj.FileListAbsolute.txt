@@ -1,0 +1,14 @@
+D:\Project Items\MicrosoftDynamics\VCCReportingTool\APICall\obj\Debug\APICall.csprojResolveAssemblyReference.cache
+D:\Test1\VCCToolDemo\APICall\bin\Debug\APICall.exe.config
+D:\Test1\VCCToolDemo\APICall\bin\Debug\APICall.exe
+D:\Test1\VCCToolDemo\APICall\bin\Debug\APICall.pdb
+D:\Test1\VCCToolDemo\APICall\obj\Debug\APICall.csprojResolveAssemblyReference.cache
+D:\Test1\VCCToolDemo\APICall\obj\Debug\APICall.exe
+D:\Test1\VCCToolDemo\APICall\obj\Debug\APICall.pdb
+C:\git-personal\DevOpsReportTool\VCCToolDemo\APICall\bin\Debug\APICall.exe.config
+C:\git-personal\DevOpsReportTool\VCCToolDemo\APICall\bin\Debug\APICall.exe
+C:\git-personal\DevOpsReportTool\VCCToolDemo\APICall\bin\Debug\APICall.pdb
+C:\git-personal\DevOpsReportTool\VCCToolDemo\APICall\obj\Debug\APICall.csproj.CoreCompileInputs.cache
+C:\git-personal\DevOpsReportTool\VCCToolDemo\APICall\obj\Debug\APICall.exe
+C:\git-personal\DevOpsReportTool\VCCToolDemo\APICall\obj\Debug\APICall.pdb
+C:\git-personal\DevOpsReportTool\VCCToolDemo\APICall\obj\Debug\APICall.csprojAssemblyReference.cache

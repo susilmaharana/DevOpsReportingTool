@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VCCReportingToolModelStoreContainer" CdmEntityContainer="VCCReportingToolEntities">
+    <EntitySetMapping Name="FixVersionRecords">
+      <EntityTypeMapping TypeName="VCCReportingToolModel.FixVersionRecord">
+        <MappingFragment StoreEntitySet="FixVersionRecords">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="EditedDate" ColumnName="EditedDate" />
+          <ScalarProperty Name="EditedBy" ColumnName="EditedBy" />
+          <ScalarProperty Name="RelatedFixVersionID" ColumnName="RelatedFixVersionID" />
+          <ScalarProperty Name="WorkItemID" ColumnName="WorkItemID" />
+          <ScalarProperty Name="FixVersionName" ColumnName="FixVersionName" />
+          <ScalarProperty Name="FixVersionID" ColumnName="FixVersionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Status">
+      <EntityTypeMapping TypeName="VCCReportingToolModel.Status">
+        <MappingFragment StoreEntitySet="Status">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UpcomingTasks">
+      <EntityTypeMapping TypeName="VCCReportingToolModel.UpcomingTask">
+        <MappingFragment StoreEntitySet="UpcomingTasks">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="Pendingwith" ColumnName="Pendingwith" />
+          <ScalarProperty Name="Requester" ColumnName="Requester" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="Summary" ColumnName="Summary" />
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="VCCReportingToolModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Notes">
+      <EntityTypeMapping TypeName="VCCReportingToolModel.Note">
+        <MappingFragment StoreEntitySet="Notes">
+          <ScalarProperty Name="EditedUser" ColumnName="EditedUser" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Note1" ColumnName="Note" />
+          <ScalarProperty Name="EditedDate" ColumnName="EditedDate" />
+          <ScalarProperty Name="EditedBy" ColumnName="EditedBy" />
+          <ScalarProperty Name="RelatedNoteID" ColumnName="RelatedNoteID" />
+          <ScalarProperty Name="WorkItemID" ColumnName="WorkItemID" />
+          <ScalarProperty Name="NoteID" ColumnName="NoteID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkItems">
+      <EntityTypeMapping TypeName="VCCReportingToolModel.WorkItem">
+        <MappingFragment StoreEntitySet="WorkItems">
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="IsUpdated" ColumnName="IsUpdated" />
+          <ScalarProperty Name="PendingWith" ColumnName="PendingWith" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Fixversion" ColumnName="Fixversion" />
+          <ScalarProperty Name="ExpectedReleaseDate" ColumnName="ExpectedReleaseDate" />
+          <ScalarProperty Name="Assignee" ColumnName="Assignee" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Summary" ColumnName="Summary" />
+          <ScalarProperty Name="DevopsItemID" ColumnName="DevopsItemID" />
+          <ScalarProperty Name="WorkItemID" ColumnName="WorkItemID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
