@@ -1,0 +1,519 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DevOpsReportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Colors">
+          <Key>
+            <PropertyRef Name="ColorID" />
+          </Key>
+          <Property Name="ColorID" Type="int" Nullable="false" />
+          <Property Name="ColorName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ColorHashCode" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FixVersionRecords">
+          <Key>
+            <PropertyRef Name="FixVersionID" />
+          </Key>
+          <Property Name="FixVersionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FixVersionName" Type="nvarchar" MaxLength="100" />
+          <Property Name="WorkItemID" Type="int" />
+          <Property Name="RelatedFixVersionID" Type="int" />
+          <Property Name="EditedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="EditedDate" Type="datetime" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Notes">
+          <Key>
+            <PropertyRef Name="NoteID" />
+          </Key>
+          <Property Name="NoteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkItemID" Type="int" />
+          <Property Name="RelatedNoteID" Type="int" />
+          <Property Name="EditedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="EditedDate" Type="datetime" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="EditedUser" Type="int" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="UpcomingTasks">
+          <Key>
+            <PropertyRef Name="TicketID" />
+          </Key>
+          <Property Name="TicketID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Summary" Type="nvarchar" MaxLength="200" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="Requester" Type="nvarchar" MaxLength="200" />
+          <Property Name="Pendingwith" Type="nvarchar" MaxLength="200" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" />
+          <Property Name="Password" Type="nvarchar" MaxLength="200" />
+          <Property Name="Color" Type="nvarchar" MaxLength="200" />
+          <Property Name="ColorID" Type="int" />
+        </EntityType>
+        <EntityType Name="WorkItems">
+          <Key>
+            <PropertyRef Name="WorkItemID" />
+          </Key>
+          <Property Name="WorkItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DevopsItemID" Type="int" />
+          <Property Name="Summary" Type="nvarchar" MaxLength="500" />
+          <Property Name="Type" Type="nvarchar" MaxLength="20" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="Status" Type="int" />
+          <Property Name="Assignee" Type="int" />
+          <Property Name="ExpectedReleaseDate" Type="date" />
+          <Property Name="Fixversion" Type="nvarchar" MaxLength="100" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+          <Property Name="PendingWith" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsUpdated" Type="bit" />
+          <Property Name="ProjectName" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <Association Name="FK_FixVersionRecords_WorkItems">
+          <End Role="WorkItems" Type="Self.WorkItems" Multiplicity="0..1" />
+          <End Role="FixVersionRecords" Type="Self.FixVersionRecords" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkItems">
+              <PropertyRef Name="WorkItemID" />
+            </Principal>
+            <Dependent Role="FixVersionRecords">
+              <PropertyRef Name="WorkItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notes_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Notes" Type="Self.Notes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Notes">
+              <PropertyRef Name="EditedUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notes_WorkItems">
+          <End Role="WorkItems" Type="Self.WorkItems" Multiplicity="0..1" />
+          <End Role="Notes" Type="Self.Notes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkItems">
+              <PropertyRef Name="WorkItemID" />
+            </Principal>
+            <Dependent Role="Notes">
+              <PropertyRef Name="WorkItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Colors">
+          <End Role="Colors" Type="Self.Colors" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="ColorID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="ColorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkItems_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="WorkItems" Type="Self.WorkItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="WorkItems">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkItems_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="WorkItems" Type="Self.WorkItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="WorkItems">
+              <PropertyRef Name="Assignee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DevOpsReportModelStoreContainer">
+          <EntitySet Name="Colors" EntityType="Self.Colors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FixVersionRecords" EntityType="Self.FixVersionRecords" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UpcomingTasks" EntityType="Self.UpcomingTasks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkItems" EntityType="Self.WorkItems" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_FixVersionRecords_WorkItems" Association="Self.FK_FixVersionRecords_WorkItems">
+            <End Role="WorkItems" EntitySet="WorkItems" />
+            <End Role="FixVersionRecords" EntitySet="FixVersionRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notes_Users" Association="Self.FK_Notes_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Notes" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notes_WorkItems" Association="Self.FK_Notes_WorkItems">
+            <End Role="WorkItems" EntitySet="WorkItems" />
+            <End Role="Notes" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Colors" Association="Self.FK_Users_Colors">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkItems_Status" Association="Self.FK_WorkItems_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="WorkItems" EntitySet="WorkItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkItems_Users" Association="Self.FK_WorkItems_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="WorkItems" EntitySet="WorkItems" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DevOpsReportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="ColorID" />
+          </Key>
+          <Property Name="ColorID" Type="Int32" Nullable="false" />
+          <Property Name="ColorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ColorHashCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Colors" FromRole="Colors" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="FixVersionRecord">
+          <Key>
+            <PropertyRef Name="FixVersionID" />
+          </Key>
+          <Property Name="FixVersionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FixVersionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="WorkItemID" Type="Int32" />
+          <Property Name="RelatedFixVersionID" Type="Int32" />
+          <Property Name="EditedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EditedDate" Type="DateTime" Precision="3" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="WorkItem" Relationship="Self.FK_FixVersionRecords_WorkItems" FromRole="FixVersionRecords" ToRole="WorkItems" />
+        </EntityType>
+        <EntityType Name="Note">
+          <Key>
+            <PropertyRef Name="NoteID" />
+          </Key>
+          <Property Name="NoteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkItemID" Type="Int32" />
+          <Property Name="RelatedNoteID" Type="Int32" />
+          <Property Name="EditedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EditedDate" Type="DateTime" Precision="3" />
+          <Property Name="Note1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="EditedUser" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Notes_Users" FromRole="Notes" ToRole="Users" />
+          <NavigationProperty Name="WorkItem" Relationship="Self.FK_Notes_WorkItems" FromRole="Notes" ToRole="WorkItems" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="WorkItems" Relationship="Self.FK_WorkItems_Status" FromRole="Status" ToRole="WorkItems" />
+        </EntityType>
+        <EntityType Name="UpcomingTask">
+          <Key>
+            <PropertyRef Name="TicketID" />
+          </Key>
+          <Property Name="TicketID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Summary" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="Requester" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Pendingwith" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Color" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ColorID" Type="Int32" />
+          <NavigationProperty Name="Color1" Relationship="Self.FK_Users_Colors" FromRole="Users" ToRole="Colors" />
+          <NavigationProperty Name="Notes" Relationship="Self.FK_Notes_Users" FromRole="Users" ToRole="Notes" />
+          <NavigationProperty Name="WorkItems" Relationship="Self.FK_WorkItems_Users" FromRole="Users" ToRole="WorkItems" />
+        </EntityType>
+        <EntityType Name="WorkItem">
+          <Key>
+            <PropertyRef Name="WorkItemID" />
+          </Key>
+          <Property Name="WorkItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DevopsItemID" Type="Int32" />
+          <Property Name="Summary" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="Assignee" Type="Int32" />
+          <Property Name="ExpectedReleaseDate" Type="DateTime" Precision="0" />
+          <Property Name="Fixversion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PendingWith" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsUpdated" Type="Boolean" />
+          <Property Name="ProjectName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FixVersionRecords" Relationship="Self.FK_FixVersionRecords_WorkItems" FromRole="WorkItems" ToRole="FixVersionRecords" />
+          <NavigationProperty Name="Notes1" Relationship="Self.FK_Notes_WorkItems" FromRole="WorkItems" ToRole="Notes" />
+          <NavigationProperty Name="Status1" Relationship="Self.FK_WorkItems_Status" FromRole="WorkItems" ToRole="Status" />
+          <NavigationProperty Name="User" Relationship="Self.FK_WorkItems_Users" FromRole="WorkItems" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK_Users_Colors">
+          <End Role="Colors" Type="Self.Color" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="ColorID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="ColorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FixVersionRecords_WorkItems">
+          <End Role="WorkItems" Type="Self.WorkItem" Multiplicity="0..1" />
+          <End Role="FixVersionRecords" Type="Self.FixVersionRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkItems">
+              <PropertyRef Name="WorkItemID" />
+            </Principal>
+            <Dependent Role="FixVersionRecords">
+              <PropertyRef Name="WorkItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notes_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Notes" Type="Self.Note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Notes">
+              <PropertyRef Name="EditedUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notes_WorkItems">
+          <End Role="WorkItems" Type="Self.WorkItem" Multiplicity="0..1" />
+          <End Role="Notes" Type="Self.Note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkItems">
+              <PropertyRef Name="WorkItemID" />
+            </Principal>
+            <Dependent Role="Notes">
+              <PropertyRef Name="WorkItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkItems_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="WorkItems" Type="Self.WorkItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="WorkItems">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkItems_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="WorkItems" Type="Self.WorkItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="WorkItems">
+              <PropertyRef Name="Assignee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DevOpsReportEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Colors" EntityType="Self.Color" />
+          <EntitySet Name="FixVersionRecords" EntityType="Self.FixVersionRecord" />
+          <EntitySet Name="Notes" EntityType="Self.Note" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="UpcomingTasks" EntityType="Self.UpcomingTask" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="WorkItems" EntityType="Self.WorkItem" />
+          <AssociationSet Name="FK_Users_Colors" Association="Self.FK_Users_Colors">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FixVersionRecords_WorkItems" Association="Self.FK_FixVersionRecords_WorkItems">
+            <End Role="WorkItems" EntitySet="WorkItems" />
+            <End Role="FixVersionRecords" EntitySet="FixVersionRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notes_Users" Association="Self.FK_Notes_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Notes" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notes_WorkItems" Association="Self.FK_Notes_WorkItems">
+            <End Role="WorkItems" EntitySet="WorkItems" />
+            <End Role="Notes" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkItems_Status" Association="Self.FK_WorkItems_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="WorkItems" EntitySet="WorkItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkItems_Users" Association="Self.FK_WorkItems_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="WorkItems" EntitySet="WorkItems" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DevOpsReportModelStoreContainer" CdmEntityContainer="DevOpsReportEntities">
+          <EntitySetMapping Name="Colors">
+            <EntityTypeMapping TypeName="DevOpsReportModel.Color">
+              <MappingFragment StoreEntitySet="Colors">
+                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+                <ScalarProperty Name="ColorName" ColumnName="ColorName" />
+                <ScalarProperty Name="ColorHashCode" ColumnName="ColorHashCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FixVersionRecords">
+            <EntityTypeMapping TypeName="DevOpsReportModel.FixVersionRecord">
+              <MappingFragment StoreEntitySet="FixVersionRecords">
+                <ScalarProperty Name="FixVersionID" ColumnName="FixVersionID" />
+                <ScalarProperty Name="FixVersionName" ColumnName="FixVersionName" />
+                <ScalarProperty Name="WorkItemID" ColumnName="WorkItemID" />
+                <ScalarProperty Name="RelatedFixVersionID" ColumnName="RelatedFixVersionID" />
+                <ScalarProperty Name="EditedBy" ColumnName="EditedBy" />
+                <ScalarProperty Name="EditedDate" ColumnName="EditedDate" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notes">
+            <EntityTypeMapping TypeName="DevOpsReportModel.Note">
+              <MappingFragment StoreEntitySet="Notes">
+                <ScalarProperty Name="NoteID" ColumnName="NoteID" />
+                <ScalarProperty Name="WorkItemID" ColumnName="WorkItemID" />
+                <ScalarProperty Name="RelatedNoteID" ColumnName="RelatedNoteID" />
+                <ScalarProperty Name="EditedBy" ColumnName="EditedBy" />
+                <ScalarProperty Name="EditedDate" ColumnName="EditedDate" />
+                <ScalarProperty Name="Note1" ColumnName="Note" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="EditedUser" ColumnName="EditedUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="DevOpsReportModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UpcomingTasks">
+            <EntityTypeMapping TypeName="DevOpsReportModel.UpcomingTask">
+              <MappingFragment StoreEntitySet="UpcomingTasks">
+                <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="Requester" ColumnName="Requester" />
+                <ScalarProperty Name="Pendingwith" ColumnName="Pendingwith" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DevOpsReportModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkItems">
+            <EntityTypeMapping TypeName="DevOpsReportModel.WorkItem">
+              <MappingFragment StoreEntitySet="WorkItems">
+                <ScalarProperty Name="WorkItemID" ColumnName="WorkItemID" />
+                <ScalarProperty Name="DevopsItemID" ColumnName="DevopsItemID" />
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Assignee" ColumnName="Assignee" />
+                <ScalarProperty Name="ExpectedReleaseDate" ColumnName="ExpectedReleaseDate" />
+                <ScalarProperty Name="Fixversion" ColumnName="Fixversion" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="PendingWith" ColumnName="PendingWith" />
+                <ScalarProperty Name="IsUpdated" ColumnName="IsUpdated" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

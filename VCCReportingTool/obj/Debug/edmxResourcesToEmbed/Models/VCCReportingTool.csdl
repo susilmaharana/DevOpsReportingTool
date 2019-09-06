@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VCCReportingToolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="VCCReportingToolEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="FixVersionRecords" EntityType="VCCReportingToolModel.FixVersionRecord" />
+    <EntitySet Name="Status" EntityType="VCCReportingToolModel.Status" />
+    <EntitySet Name="UpcomingTasks" EntityType="VCCReportingToolModel.UpcomingTask" />
+    <EntitySet Name="Users" EntityType="VCCReportingToolModel.User" />
+    <EntitySet Name="Notes" EntityType="VCCReportingToolModel.Note" />
+    <AssociationSet Name="FK_Notes_Users" Association="VCCReportingToolModel.FK_Notes_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Note" EntitySet="Notes" />
+    </AssociationSet>
+    <EntitySet Name="WorkItems" EntityType="VCCReportingToolModel.WorkItem" />
+    <AssociationSet Name="FK_FixVersionRecords_WorkItems" Association="VCCReportingToolModel.FK_FixVersionRecords_WorkItems">
+      <End Role="WorkItem" EntitySet="WorkItems" />
+      <End Role="FixVersionRecord" EntitySet="FixVersionRecords" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notes_WorkItems" Association="VCCReportingToolModel.FK_Notes_WorkItems">
+      <End Role="WorkItem" EntitySet="WorkItems" />
+      <End Role="Note" EntitySet="Notes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkItems_Status" Association="VCCReportingToolModel.FK_WorkItems_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="WorkItem" EntitySet="WorkItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkItems_Users" Association="VCCReportingToolModel.FK_WorkItems_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="WorkItem" EntitySet="WorkItems" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="FixVersionRecord">
+    <Key>
+      <PropertyRef Name="FixVersionID" />
+    </Key>
+    <Property Name="FixVersionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FixVersionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="WorkItemID" Type="Int32" />
+    <Property Name="RelatedFixVersionID" Type="Int32" />
+    <Property Name="EditedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EditedDate" Type="DateTime" Precision="3" />
+    <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <NavigationProperty Name="WorkItem" Relationship="VCCReportingToolModel.FK_FixVersionRecords_WorkItems" FromRole="FixVersionRecord" ToRole="WorkItem" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="StatusID" />
+    </Key>
+    <Property Name="StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="WorkItems" Relationship="VCCReportingToolModel.FK_WorkItems_Status" FromRole="Status" ToRole="WorkItem" />
+  </EntityType>
+  <EntityType Name="UpcomingTask">
+    <Key>
+      <PropertyRef Name="TicketID" />
+    </Key>
+    <Property Name="TicketID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Summary" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Priority" Type="Int32" />
+    <Property Name="Requester" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Pendingwith" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsDeleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Color" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Notes" Relationship="VCCReportingToolModel.FK_Notes_Users" FromRole="User" ToRole="Note" />
+    <NavigationProperty Name="WorkItems" Relationship="VCCReportingToolModel.FK_WorkItems_Users" FromRole="User" ToRole="WorkItem" />
+  </EntityType>
+  <EntityType Name="Note">
+    <Key>
+      <PropertyRef Name="NoteID" />
+    </Key>
+    <Property Name="NoteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WorkItemID" Type="Int32" />
+    <Property Name="RelatedNoteID" Type="Int32" />
+    <Property Name="EditedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EditedDate" Type="DateTime" Precision="3" />
+    <Property Name="Note1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="EditedUser" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="VCCReportingToolModel.FK_Notes_Users" FromRole="Note" ToRole="User" />
+    <NavigationProperty Name="WorkItem" Relationship="VCCReportingToolModel.FK_Notes_WorkItems" FromRole="Note" ToRole="WorkItem" />
+  </EntityType>
+  <Association Name="FK_Notes_Users">
+    <End Type="VCCReportingToolModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="VCCReportingToolModel.Note" Role="Note" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Note">
+        <PropertyRef Name="EditedUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="WorkItem">
+    <Key>
+      <PropertyRef Name="WorkItemID" />
+    </Key>
+    <Property Name="WorkItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DevopsItemID" Type="Int32" />
+    <Property Name="Summary" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Priority" Type="Int32" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="Assignee" Type="Int32" />
+    <Property Name="ExpectedReleaseDate" Type="DateTime" Precision="0" />
+    <Property Name="Fixversion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PendingWith" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsUpdated" Type="Boolean" />
+    <Property Name="ProjectName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="FixVersionRecords" Relationship="VCCReportingToolModel.FK_FixVersionRecords_WorkItems" FromRole="WorkItem" ToRole="FixVersionRecord" />
+    <NavigationProperty Name="Notes1" Relationship="VCCReportingToolModel.FK_Notes_WorkItems" FromRole="WorkItem" ToRole="Note" />
+    <NavigationProperty Name="Status1" Relationship="VCCReportingToolModel.FK_WorkItems_Status" FromRole="WorkItem" ToRole="Status" />
+    <NavigationProperty Name="User" Relationship="VCCReportingToolModel.FK_WorkItems_Users" FromRole="WorkItem" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_FixVersionRecords_WorkItems">
+    <End Type="VCCReportingToolModel.WorkItem" Role="WorkItem" Multiplicity="0..1" />
+    <End Type="VCCReportingToolModel.FixVersionRecord" Role="FixVersionRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkItem">
+        <PropertyRef Name="WorkItemID" />
+      </Principal>
+      <Dependent Role="FixVersionRecord">
+        <PropertyRef Name="WorkItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notes_WorkItems">
+    <End Type="VCCReportingToolModel.WorkItem" Role="WorkItem" Multiplicity="0..1" />
+    <End Type="VCCReportingToolModel.Note" Role="Note" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkItem">
+        <PropertyRef Name="WorkItemID" />
+      </Principal>
+      <Dependent Role="Note">
+        <PropertyRef Name="WorkItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkItems_Status">
+    <End Type="VCCReportingToolModel.Status" Role="Status" Multiplicity="0..1" />
+    <End Type="VCCReportingToolModel.WorkItem" Role="WorkItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="StatusID" />
+      </Principal>
+      <Dependent Role="WorkItem">
+        <PropertyRef Name="Status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkItems_Users">
+    <End Type="VCCReportingToolModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="VCCReportingToolModel.WorkItem" Role="WorkItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="WorkItem">
+        <PropertyRef Name="Assignee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
