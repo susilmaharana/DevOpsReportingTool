@@ -1,12 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using VCCReportingTool.Models;
 using Newtonsoft.Json;
-using Rotativa;
+using Microsoft.TeamFoundation.WorkItemTracking.WebApi;
+using Microsoft.TeamFoundation.WorkItemTracking.WebApi.Models;
+using Microsoft.VisualStudio.Services.Client;
+using Microsoft.VisualStudio.Services.WebApi;
+using VCCReportingTool.Models;
+using WorkItem = VCCReportingTool.Models.WorkItem;
+
 
 namespace VCCReportingTool.Controllers
 {
@@ -260,6 +266,8 @@ namespace VCCReportingTool.Controllers
             objWorkItem.UpcomingData = UpcomingTasks;
             return View(objWorkItem);
         }
+
+        
 
         protected override void Dispose(bool disposing)
         {

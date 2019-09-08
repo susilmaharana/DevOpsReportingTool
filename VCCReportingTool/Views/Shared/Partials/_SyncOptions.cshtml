@@ -1,0 +1,35 @@
+﻿<div class="">
+    <div class="modal-header">
+        <h3 class="modal-title">Select Options</h3>
+    </div>
+    <div>
+        <ul>
+            <li class="checkbox form-group">
+                <label><input type="checkbox" value="Dynamics 365 Marketing Website" name="chkBox">Dynamics</label>
+            </li>
+            <li class="checkbox form-group">
+                <label><input type="checkbox" value="Dynamics 365 Marketing Website\\Integrated Marketing" name="chkBox">Dynamics 365 Integrated Marketing</label>
+            </li>
+
+            <li class="checkbox form-group">
+                <label><input type="checkbox" value="Power BI Marketing Website" name="chkBox">Power BI</label>
+            </li>
+            <li class="checkbox form-group">
+                <label><input type="checkbox" value="Power BI Marketing Website\\Integrated Marketing" name="chkBox">Power BI Integrated Marketing</label>
+            </li>
+
+            <li class="checkbox form-group">
+                <label><input type="checkbox" value="Power Platform Marketing Website" name="chkBox">Power Platform</label>
+            </li>
+            <li class="checkbox form-group">
+                <label><input type="checkbox" value="Power Query Marketing Website" name="chkBox">Power Query</label>
+            </li>
+        </ul>
+        <div>
+            <input type="text" id="txtTags" width="400" placeholder="Tags separated by comma"/>
+        </div>
+        <div>
+            <button type="button" id="getCheckboxValues" onclick="GetselectedCheckbox(this)" class="btn btn-primary">Filter data</button>
+        </div>
+    </div>
+</div>
