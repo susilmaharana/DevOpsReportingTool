@@ -1,12 +1,13 @@
-﻿using Microsoft.TeamFoundation.WorkItemTracking.WebApi;
-using Microsoft.TeamFoundation.WorkItemTracking.WebApi.Models;
-using Microsoft.VisualStudio.Services.Client;
-using Microsoft.VisualStudio.Services.WebApi;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using Microsoft.TeamFoundation.WorkItemTracking.WebApi;
+using Microsoft.TeamFoundation.WorkItemTracking.WebApi.Models;
+using Microsoft.VisualStudio.Services.Client;
+using Microsoft.VisualStudio.Services.WebApi;
 using VCCReportingTool.Models;
+using WorkItem = VCCReportingTool.Models.WorkItem;
 
 namespace VCCReportingTool.Controllers
 {
@@ -14,40 +15,10 @@ namespace VCCReportingTool.Controllers
     {
         private DevOpsReportEntities db = new DevOpsReportEntities();
 
-        [AllowAnonymous]
-        public ActionResult Login()
+        public ActionResult Index()
         {
+            Session["LoggedinUser"] = "Test user";
             return View();
-        }
-
-        [HttpPost]
-        public ActionResult Login(string email, string password)
-        {
-            var logindetails = db.Users.Where(x => x.Email == email && x.Password == password).ToList();
-            if (logindetails.Count != 0)
-            {
-                Session["LoggedinUser"] = logindetails.FirstOrDefault().FullName;
-                return RedirectToAction("Index", "WorkItems");
-            }
-            return View();
-        }
-
-        public ActionResult Register()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Register([Bind(Include = "UserID,FullName,Email,Password")]User user)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Users.Add(user);
-                db.SaveChanges();
-                return RedirectToAction("Login");
-            }
-            return View(user);
         }
 
         public ActionResult GetProjects(string SelectedItems)
@@ -58,7 +29,7 @@ namespace VCCReportingTool.Controllers
                 VssConnection connection = new VssConnection(new Uri("https://dev.azure.com/msazure"), new VssClientCredentials());
                 //create http client and query for resutls
                 WorkItemTrackingHttpClient witClient = connection.GetClient<WorkItemTrackingHttpClient>();
-                Wiql query = new Wiql() { Query = @"SELECT [Id], [Title], [State] FROM workitems Where [System.AreaPath] IN("+ SelectedItems +") " };
+                Wiql query = new Wiql() { Query = @"SELECT [Id], [Title], [State] FROM workitems Where [System.AreaPath] IN(" + SelectedItems + ") " };
                 WorkItemQueryResult queryResults = witClient.QueryByWiqlAsync(query).Result;
                 //Get the Work item id & URL
                 if (queryResults == null || queryResults.WorkItems.Count() == 0)
@@ -91,9 +62,9 @@ namespace VCCReportingTool.Controllers
                     {
                         //Console.WriteLine("{0}  {1}  {2}", workItem.Id, workItem.Fields["System.Title"], workItem.Fields["System.State"]);
                         var projectname = workItem.Fields["System.AreaPath"].ToString().Replace("One\\Business Applications Group Websites\\", "");
-                        if (projectname.Contains("Dynamics 365 Marketing Website")){projectname = "Dynamics";}
+                        if (projectname.Contains("Dynamics 365 Marketing Website")) { projectname = "Dynamics"; }
                         else if (projectname.Contains("Dynamics 365 Marketing Website\\Integrated Marketing")) { projectname = "Dynamics 365 Integrated Marketing"; }
-                        else if (projectname.Contains("Power BI Marketing Website")){projectname = "Power BI";}
+                        else if (projectname.Contains("Power BI Marketing Website")) { projectname = "Power BI"; }
                         else if (projectname.Contains("Power BI Marketing Website\\Integrated Marketing")) { projectname = "Power BI Integrated Marketing"; }
                         else if (projectname.Contains("Power Platform Marketing Website")) { projectname = "Power Platform"; }
                         else if (projectname.Contains("Power Query Marketing Website")) { projectname = "Power Query"; }
@@ -102,10 +73,10 @@ namespace VCCReportingTool.Controllers
                         int maxlength = 70;
                         if (getresult.Count == 0)
                         {
-                            VCCReportingTool.Models.WorkItem objworkitem = new VCCReportingTool.Models.WorkItem();
+                            WorkItem objworkitem = new WorkItem();
                             objworkitem.DevopsItemID = workItem.Id;
                             objworkitem.Summary = workItem.Fields["System.Title"].ToString();
-                            if(objworkitem.Summary.Length > maxlength)
+                            if (objworkitem.Summary.Length > maxlength)
                             {
                                 objworkitem.Summary = objworkitem.Summary.Substring(0, Math.Min(objworkitem.Summary.Length, maxlength));
                                 objworkitem.Summary = objworkitem.Summary + ".....";
@@ -124,13 +95,5 @@ namespace VCCReportingTool.Controllers
             }
             return Json(new { success = true, responseText = "Sync Data Completed Successfully" });
         }
-        
-        public ActionResult LogOff()
-        {
-            Session.Abandon();
-            Session.Clear();
-            return RedirectToAction("Login", "Home");
-        }
-
     }
 }

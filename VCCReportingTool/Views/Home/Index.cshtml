@@ -1,31 +1,58 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model VCCReportingTool.Models.WorkItem
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //var grid = new WebGrid(Model.UnUpdatedData, rowsPerPage: 10, canPage: false); //nonupdateddata
+    //var grid1 = new WebGrid(Model.SelectedforDevelopment, rowsPerPage: 10, canPage: false); //selected for dev
+    //var grid2 = new WebGrid(Model.DevInProgressdata, rowsPerPage: 10, canPage: false); //devinprogress
+    //var grid3 = new WebGrid(Model.BacklogData, rowsPerPage: 10, canPage: false); //backlog
+    //var grid4 = new WebGrid(Model.CompletedItems, rowsPerPage: 10, canPage: false); //done items
+    //var UpcomingTasks = new WebGrid(Model.UpcomingData, rowsPerPage: 10, canPage: false); // Upcoming /No Jira Tickets
+    //var items = ViewBag.Workitemslist;
+    //var Status = "";
+    //var Assignee = "";
+    //var CurrentDate = DateTime.Now.ToString("MM-dd-yyyy");
+
+    //if (Model.Status1 == null)
+    //{
+    //    Status = "";
+    //}
+    //else
+    //{
+    //    Status = Model.Status1.Description;
+    //}
+
+    //if (Model.User == null)
+    //{
+    //    Assignee = "";
+    //}
+    //else
+    //{
+    //    Assignee = Model.User.FullName;
+    //}
 }
+<html>
+<head>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="~/Scripts/workitems/site.js"></script>
+    
+</head>
+<body>
+    <div class="actionworkitems">
+        <div class="nav navbar-nav navbar-right">
+            <a href='@Url.Action("ViewPreview", "WorkItems")' class="btn btn-primary">View Preview</a> |
+            <input type="button" id="SyncDataPopup" class="btn btn-primary" value="sync" data-toggle="modal" data-target="#mySyncModal" />
+        </div>
+    </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+    @Html.Partial("Partials/_SyncOptions")
+
+    <div id="divLoader" style="display:none;"><img src="~/Content/ajax-loader.gif" height="200" width="200" alt="Loader" style="position: absolute; top: 50%; left: 45%;" /></div>
+
+    
+</body>
+</html>
