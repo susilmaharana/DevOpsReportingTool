@@ -1,0 +1,40 @@
+{
+  "version": "1.0.0",
+  "locationUri": "VCCReportingTool/Web.config",
+  "originalUriBaseIds": {
+    "file:///D:/HelperTools/git/DevOpsReportingTool/": {
+      "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/"
+    }
+  },
+  "results": [
+    {
+      "signature": "1050aaa4cede9d194f1a849a4446a475928e734157aa06773019ece01a11a05e",
+      "toolInfoId": "credscan>>0>>202011241740",
+      "ruleId": "CSCAN-GENERAL0030",
+      "level": "error",
+      "message": {
+        "text": "{{Searcher}}CSCAN-GENERAL0030\n{{Code}}See Web.config line 12 for the code resulting in match\n{{Info}}Found User Login Credentials.\n{{Suggest}}Validate file contains secrets, remove, roll credential, and use approved store. For additional information on secret remediation see https://aka.ms/credscan "
+      },
+      "locations": [
+        {
+          "physicalLocation": {
+            "artifactLocation": {
+              "uri": "VCCReportingTool/Web.config",
+              "uriBaseId": "file:///D:/HelperTools/git/DevOpsReportingTool/"
+            },
+            "region": {
+              "startLine": 12,
+              "startColumn": 1
+            }
+          },
+          "logicalLocations": [
+            {}
+          ]
+        }
+      ],
+      "properties": {
+        "rank": "1"
+      }
+    }
+  ]
+}

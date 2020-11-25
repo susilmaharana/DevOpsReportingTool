@@ -1,0 +1,40 @@
+{
+  "version": "1.0.0",
+  "locationUri": "VCCReportingTool/bin/VCCReportingTool.dll.config",
+  "originalUriBaseIds": {
+    "file:///D:/HelperTools/git/DevOpsReportingTool/": {
+      "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/"
+    }
+  },
+  "results": [
+    {
+      "signature": "990e8b09ed1e50dc1df4551bd42a835bf9291659ddb48924ca05ba640586ed75",
+      "toolInfoId": "credscan>>0>>202011241740",
+      "ruleId": "CSCAN-GENERAL0030",
+      "level": "error",
+      "message": {
+        "text": "{{Searcher}}CSCAN-GENERAL0030\n{{Code}}See VCCReportingTool.dll.config line 13 for the code resulting in match\n{{Info}}Found User Login Credentials.\n{{Suggest}}Validate file contains secrets, remove, roll credential, and use approved store. For additional information on secret remediation see https://aka.ms/credscan "
+      },
+      "locations": [
+        {
+          "physicalLocation": {
+            "artifactLocation": {
+              "uri": "VCCReportingTool/bin/VCCReportingTool.dll.config",
+              "uriBaseId": "file:///D:/HelperTools/git/DevOpsReportingTool/"
+            },
+            "region": {
+              "startLine": 13,
+              "startColumn": 1
+            }
+          },
+          "logicalLocations": [
+            {}
+          ]
+        }
+      ],
+      "properties": {
+        "rank": "1"
+      }
+    }
+  ]
+}

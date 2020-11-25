@@ -1,0 +1,372 @@
+{
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "credscan",
+          "fullName": "Credential Scanner",
+          "rules": [
+            {
+              "id": "CSCAN-AZURE0100",
+              "shortDescription": {
+                "text": "Found Azure DevOps Personal Access Token."
+              }
+            },
+            {
+              "id": "CSCAN-GENERAL0030",
+              "shortDescription": {
+                "text": "Found User Login Credentials."
+              }
+            }
+          ]
+        }
+      },
+      "versionControlProvenance": [
+        {
+          "repositoryUri": "https://github.com/susilmaharana/DevOpsReportingTool.git",
+          "revisionId": "c036408832c3d4c5f032aaaa43460819988e8c98",
+          "branch": "master",
+          "mappedTo": {
+            "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/"
+          }
+        }
+      ],
+      "originalUriBaseIds": {
+        "file:///D:/HelperTools/git/DevOpsReportingTool/": {
+          "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/APICall/GetProjectClass.cs"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/VCCReportingTool/Web.config"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/VCCReportingTool/bin/VCCReportingTool.dll.config"
+          }
+        }
+      ],
+      "results": [],
+      "columnKind": "utf16CodeUnits",
+      "properties": {
+        "toolInfoId": "credscan>>0>>202011241712"
+      }
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "credscan",
+          "fullName": "Credential Scanner",
+          "rules": [
+            {
+              "id": "CSCAN-AZURE0100",
+              "shortDescription": {
+                "text": "Found Azure DevOps Personal Access Token."
+              }
+            },
+            {
+              "id": "CSCAN-GENERAL0030",
+              "shortDescription": {
+                "text": "Found User Login Credentials."
+              }
+            }
+          ]
+        }
+      },
+      "versionControlProvenance": [
+        {
+          "repositoryUri": "https://github.com/susilmaharana/DevOpsReportingTool.git",
+          "revisionId": "c036408832c3d4c5f032aaaa43460819988e8c98",
+          "branch": "master",
+          "mappedTo": {
+            "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/"
+          }
+        }
+      ],
+      "originalUriBaseIds": {
+        "file:///D:/HelperTools/git/DevOpsReportingTool/": {
+          "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/APICall/GetProjectClass.cs"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/VCCReportingTool/Web.config"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/VCCReportingTool/bin/VCCReportingTool.dll.config"
+          }
+        }
+      ],
+      "results": [],
+      "columnKind": "utf16CodeUnits",
+      "properties": {
+        "toolInfoId": "credscan>>0>>202011241717"
+      }
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "credscan",
+          "fullName": "Credential Scanner",
+          "rules": [
+            {
+              "id": "CSCAN-AZURE0100",
+              "shortDescription": {
+                "text": "Found Azure DevOps Personal Access Token."
+              }
+            },
+            {
+              "id": "CSCAN-GENERAL0030",
+              "shortDescription": {
+                "text": "Found User Login Credentials."
+              }
+            }
+          ]
+        }
+      },
+      "versionControlProvenance": [
+        {
+          "repositoryUri": "https://github.com/susilmaharana/DevOpsReportingTool.git",
+          "revisionId": "c036408832c3d4c5f032aaaa43460819988e8c98",
+          "branch": "master",
+          "mappedTo": {
+            "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/"
+          }
+        }
+      ],
+      "originalUriBaseIds": {
+        "file:///D:/HelperTools/git/DevOpsReportingTool/": {
+          "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/APICall/GetProjectClass.cs"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/VCCReportingTool/Web.config"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/VCCReportingTool/bin/VCCReportingTool.dll.config"
+          }
+        }
+      ],
+      "results": [],
+      "columnKind": "utf16CodeUnits",
+      "properties": {
+        "toolInfoId": "credscan>>0>>202011241730"
+      }
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "credscan",
+          "fullName": "Credential Scanner",
+          "rules": [
+            {
+              "id": "CSCAN-AZURE0100",
+              "shortDescription": {
+                "text": "Found Azure DevOps Personal Access Token."
+              }
+            },
+            {
+              "id": "CSCAN-GENERAL0030",
+              "shortDescription": {
+                "text": "Found User Login Credentials."
+              }
+            }
+          ]
+        }
+      },
+      "versionControlProvenance": [
+        {
+          "repositoryUri": "https://github.com/susilmaharana/DevOpsReportingTool.git",
+          "revisionId": "c036408832c3d4c5f032aaaa43460819988e8c98",
+          "branch": "master",
+          "mappedTo": {
+            "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/"
+          }
+        }
+      ],
+      "originalUriBaseIds": {
+        "file:///D:/HelperTools/git/DevOpsReportingTool/": {
+          "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/APICall/GetProjectClass.cs"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/VCCReportingTool/Web.config"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/VCCReportingTool/bin/VCCReportingTool.dll.config"
+          }
+        }
+      ],
+      "results": [],
+      "columnKind": "utf16CodeUnits",
+      "properties": {
+        "toolInfoId": "credscan>>0>>202011241735"
+      }
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "credscan",
+          "fullName": "Credential Scanner",
+          "rules": [
+            {
+              "id": "CSCAN-AZURE0100",
+              "shortDescription": {
+                "text": "Found Azure DevOps Personal Access Token."
+              }
+            },
+            {
+              "id": "CSCAN-GENERAL0030",
+              "shortDescription": {
+                "text": "Found User Login Credentials."
+              }
+            }
+          ]
+        }
+      },
+      "versionControlProvenance": [
+        {
+          "repositoryUri": "https://github.com/susilmaharana/DevOpsReportingTool.git",
+          "revisionId": "c036408832c3d4c5f032aaaa43460819988e8c98",
+          "branch": "master",
+          "mappedTo": {
+            "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/"
+          }
+        }
+      ],
+      "originalUriBaseIds": {
+        "file:///D:/HelperTools/git/DevOpsReportingTool/": {
+          "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/APICall/GetProjectClass.cs"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/VCCReportingTool/Web.config"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/VCCReportingTool/bin/VCCReportingTool.dll.config"
+          }
+        }
+      ],
+      "results": [],
+      "columnKind": "utf16CodeUnits",
+      "properties": {
+        "toolInfoId": "credscan>>0>>202011241740"
+      }
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "credscan",
+          "fullName": "Credential Scanner"
+        }
+      },
+      "versionControlProvenance": [
+        {
+          "repositoryUri": "https://github.com/susilmaharana/DevOpsReportingTool.git",
+          "revisionId": "c036408832c3d4c5f032aaaa43460819988e8c98",
+          "branch": "master",
+          "mappedTo": {
+            "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/"
+          }
+        }
+      ],
+      "results": [],
+      "columnKind": "utf16CodeUnits",
+      "properties": {
+        "toolInfoId": "credscan>>0>>202011241744"
+      }
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "credscan",
+          "fullName": "Credential Scanner"
+        }
+      },
+      "versionControlProvenance": [
+        {
+          "repositoryUri": "https://github.com/susilmaharana/DevOpsReportingTool.git",
+          "revisionId": "c036408832c3d4c5f032aaaa43460819988e8c98",
+          "branch": "master",
+          "mappedTo": {
+            "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/"
+          }
+        }
+      ],
+      "results": [],
+      "columnKind": "utf16CodeUnits",
+      "properties": {
+        "toolInfoId": "credscan>>0>>202011241748"
+      }
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "credscan",
+          "fullName": "Credential Scanner"
+        }
+      },
+      "versionControlProvenance": [
+        {
+          "repositoryUri": "https://github.com/susilmaharana/DevOpsReportingTool.git",
+          "revisionId": "c036408832c3d4c5f032aaaa43460819988e8c98",
+          "branch": "master",
+          "mappedTo": {
+            "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/"
+          }
+        }
+      ],
+      
+      "results": [],
+      
+      "columnKind": "utf16CodeUnits",
+      "properties": {
+        "toolInfoId": "credscan>>0>>202011241754"
+      }
+    }
+  ]
+}
