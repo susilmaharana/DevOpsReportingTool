@@ -1,0 +1,69 @@
+{
+  "version": "1.0.0",
+  "locationUri": "APICall/GetProjectClass.cs",
+  "originalUriBaseIds": {
+    "file:///D:/HelperTools/git/DevOpsReportingTool/": {
+      "uri": "file:///D:/HelperTools/git/DevOpsReportingTool/"
+    }
+  },
+  "results": [
+    {
+      "signature": "74a418c831d594eb69256e5cc1c4c6a64dfe98ed7221b3941a7f18bcb8569116",
+      "toolInfoId": "credscan>>0>>202011241735",
+      "ruleId": "CSCAN-AZURE0100",
+      "level": "error",
+      "message": {
+        "text": "{{Searcher}}CSCAN-AZURE0100\n{{Code}}See GetProjectClass.cs line 17 for the code resulting in match\n{{Info}}Found Azure DevOps Personal Access Token.\n{{Suggest}}Validate file contains secrets, remove, roll credential, and use approved store. For additional information on secret remediation see https://aka.ms/credscan "
+      },
+      "locations": [
+        {
+          "physicalLocation": {
+            "artifactLocation": {
+              "uri": "APICall/GetProjectClass.cs",
+              "uriBaseId": "file:///D:/HelperTools/git/DevOpsReportingTool/"
+            },
+            "region": {
+              "startLine": 17,
+              "startColumn": 1
+            }
+          },
+          "logicalLocations": [
+            {}
+          ]
+        }
+      ],
+      "properties": {
+        "rank": "1"
+      }
+    },
+    {
+      "signature": "c237a553b7d0a3bb4bae1d51d3477e33c27f46b743fd2b31e49da9b58062e9e2",
+      "toolInfoId": "credscan>>0>>202011241740",
+      "ruleId": "CSCAN-AZURE0100",
+      "level": "error",
+      "message": {
+        "text": "{{Searcher}}CSCAN-AZURE0100\n{{Code}}See GetProjectClass.cs line 17 for the code resulting in match\n{{Info}}Found Azure DevOps Personal Access Token.\n{{Suggest}}Validate file contains secrets, remove, roll credential, and use approved store. For additional information on secret remediation see https://aka.ms/credscan "
+      },
+      "locations": [
+        {
+          "physicalLocation": {
+            "artifactLocation": {
+              "uri": "APICall/GetProjectClass.cs",
+              "uriBaseId": "file:///D:/HelperTools/git/DevOpsReportingTool/"
+            },
+            "region": {
+              "startLine": 17,
+              "startColumn": 1
+            }
+          },
+          "logicalLocations": [
+            {}
+          ]
+        }
+      ],
+      "properties": {
+        "rank": "1"
+      }
+    }
+  ]
+}

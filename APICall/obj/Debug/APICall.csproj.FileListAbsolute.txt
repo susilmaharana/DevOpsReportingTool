@@ -12,3 +12,10 @@ C:\git-personal\DevOpsReportTool\VCCToolDemo\APICall\obj\Debug\APICall.csproj.Co
 C:\git-personal\DevOpsReportTool\VCCToolDemo\APICall\obj\Debug\APICall.exe
 C:\git-personal\DevOpsReportTool\VCCToolDemo\APICall\obj\Debug\APICall.pdb
 C:\git-personal\DevOpsReportTool\VCCToolDemo\APICall\obj\Debug\APICall.csprojAssemblyReference.cache
+D:\HelperTools\git\DevOpsReportingTool\APICall\bin\Debug\APICall.exe.config
+D:\HelperTools\git\DevOpsReportingTool\APICall\bin\Debug\APICall.exe
+D:\HelperTools\git\DevOpsReportingTool\APICall\bin\Debug\APICall.pdb
+D:\HelperTools\git\DevOpsReportingTool\APICall\obj\Debug\APICall.csprojAssemblyReference.cache
+D:\HelperTools\git\DevOpsReportingTool\APICall\obj\Debug\APICall.csproj.CoreCompileInputs.cache
+D:\HelperTools\git\DevOpsReportingTool\APICall\obj\Debug\APICall.exe
+D:\HelperTools\git\DevOpsReportingTool\APICall\obj\Debug\APICall.pdb

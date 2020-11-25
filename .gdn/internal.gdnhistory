@@ -1,0 +1,95 @@
+{
+  "version": "1.0.0",
+  "snapshots": {
+    "history.run.202011241712": {
+      "name": "history.run.202011241712",
+      "createdDate": "2020-11-25 01:16:03Z",
+      "lastUpdatedDate": "2020-11-25 01:16:03Z"
+    },
+    "history.run.202011241717": {
+      "name": "history.run.202011241717",
+      "createdDate": "2020-11-25 01:20:44Z",
+      "lastUpdatedDate": "2020-11-25 01:20:44Z"
+    },
+    "history.run.202011241730": {
+      "name": "history.run.202011241730",
+      "createdDate": "2020-11-25 01:33:47Z",
+      "lastUpdatedDate": "2020-11-25 01:33:47Z"
+    },
+    "history.run.202011241735": {
+      "name": "history.run.202011241735",
+      "createdDate": "2020-11-25 01:38:03Z",
+      "lastUpdatedDate": "2020-11-25 01:38:03Z"
+    },
+    "history.run.202011241740": {
+      "name": "history.run.202011241740",
+      "createdDate": "2020-11-25 01:43:53Z",
+      "lastUpdatedDate": "2020-11-25 01:43:53Z"
+    }
+  },
+  "results": {
+    "74a418c831d594eb69256e5cc1c4c6a64dfe98ed7221b3941a7f18bcb8569116": {
+      "signature": "74a418c831d594eb69256e5cc1c4c6a64dfe98ed7221b3941a7f18bcb8569116",
+      "target": "APICall/GetProjectClass.cs",
+      "memberOf": [
+        "history.run.202011241712",
+        "history.run.202011241717",
+        "history.run.202011241730",
+        "history.run.202011241735"
+      ],
+      "tool": "credscan",
+      "ruleId": "CSCAN-AZURE0100",
+      "justification": null,
+      "createdDate": "2020-11-25 01:16:03Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "1050aaa4cede9d194f1a849a4446a475928e734157aa06773019ece01a11a05e": {
+      "signature": "1050aaa4cede9d194f1a849a4446a475928e734157aa06773019ece01a11a05e",
+      "target": "VCCReportingTool/Web.config",
+      "memberOf": [
+        "history.run.202011241712",
+        "history.run.202011241717",
+        "history.run.202011241730",
+        "history.run.202011241735",
+        "history.run.202011241740"
+      ],
+      "tool": "credscan",
+      "ruleId": "CSCAN-GENERAL0030",
+      "justification": null,
+      "createdDate": "2020-11-25 01:16:03Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "990e8b09ed1e50dc1df4551bd42a835bf9291659ddb48924ca05ba640586ed75": {
+      "signature": "990e8b09ed1e50dc1df4551bd42a835bf9291659ddb48924ca05ba640586ed75",
+      "target": "VCCReportingTool/bin/VCCReportingTool.dll.config",
+      "memberOf": [
+        "history.run.202011241712",
+        "history.run.202011241717",
+        "history.run.202011241730",
+        "history.run.202011241735",
+        "history.run.202011241740"
+      ],
+      "tool": "credscan",
+      "ruleId": "CSCAN-GENERAL0030",
+      "justification": null,
+      "createdDate": "2020-11-25 01:16:03Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "c237a553b7d0a3bb4bae1d51d3477e33c27f46b743fd2b31e49da9b58062e9e2": {
+      "signature": "c237a553b7d0a3bb4bae1d51d3477e33c27f46b743fd2b31e49da9b58062e9e2",
+      "target": "APICall/GetProjectClass.cs",
+      "memberOf": [
+        "history.run.202011241740"
+      ],
+      "tool": "credscan",
+      "ruleId": "CSCAN-AZURE0100",
+      "justification": null,
+      "createdDate": "2020-11-25 01:43:53Z",
+      "expirationDate": null,
+      "type": null
+    }
+  }
+}

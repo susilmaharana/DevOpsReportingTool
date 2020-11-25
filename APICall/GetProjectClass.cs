@@ -14,7 +14,7 @@ namespace APICall
         {
             try
             {
-                var personalaccesstoken = "tjz6b7dxulbu2tc3ss6zhsxyra5amesmqgj36c3bqm72q43e7bsq";
+                var personalaccesstoken = string.Empty;
 
                 using (HttpClient client = new HttpClient())
                 {
